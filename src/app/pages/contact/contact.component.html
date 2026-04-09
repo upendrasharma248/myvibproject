@@ -1,0 +1,62 @@
+<div class="container py-5">
+  <h2 class="mb-4">Contact Us</h2>
+  <div class="row">
+    <div class="col-md-7">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name" placeholder="Your Name"
+            [ngClass]="{'is-invalid': (submitted || contactForm.get('name')?.touched) && contactForm.get('name')?.invalid}">
+          <div class="invalid-feedback d-block" *ngIf="(submitted || contactForm.get('name')?.touched) && contactForm.get('name')?.errors?.['required']">
+            Name is required.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email" placeholder="Your Email"
+            [ngClass]="{'is-invalid': (submitted || contactForm.get('email')?.touched) && contactForm.get('email')?.invalid}">
+          <div class="invalid-feedback d-block" *ngIf="(submitted || contactForm.get('email')?.touched) && contactForm.get('email')?.errors?.['required']">
+            Email is required.
+          </div>
+          <div class="invalid-feedback d-block" *ngIf="(submitted || contactForm.get('email')?.touched) && contactForm.get('email')?.errors?.['email']">
+            Please enter a valid email address.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="mobno" class="form-label">Mob No</label>
+          <input type="text" class="form-control" id="mobno" formControlName="mobno" placeholder="Your Mobile Number"
+            [ngClass]="{'is-invalid': (submitted || contactForm.get('mobno')?.touched) && contactForm.get('mobno')?.invalid}">
+          <div class="invalid-feedback d-block" *ngIf="(submitted || contactForm.get('mobno')?.touched) && contactForm.get('mobno')?.errors?.['required']">
+            Mobile number is required.
+          </div>
+          <div class="invalid-feedback d-block" *ngIf="(submitted || contactForm.get('mobno')?.touched) && contactForm.get('mobno')?.errors?.['pattern']">
+            Please enter a valid mobile number.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" id="message" formControlName="message" rows="4" placeholder="Your Message"
+            [ngClass]="{'is-invalid': (submitted || contactForm.get('message')?.touched) && contactForm.get('message')?.invalid}"></textarea>
+          <div class="invalid-feedback d-block" *ngIf="(submitted || contactForm.get('message')?.touched) && contactForm.get('message')?.errors?.['required']">
+            Message is required.
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="loading">
+          {{ loading ? 'Sending...' : 'Send Message' }}
+        </button>
+        <div *ngIf="successMessage" class="alert alert-success mt-2">{{ successMessage }}</div>
+        <div *ngIf="errorMessage" class="alert alert-danger mt-2">{{ errorMessage }}</div>
+      </form>
+    </div>
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Contact Information</h5>
+          <p><strong>Email:</strong> info&#64;lvc.com</p>
+          <p><strong>Phone:</strong> +1 234 567 8900</p>
+          <p><strong>Address:</strong> 123 Virtual Lane, Online City, 00000</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

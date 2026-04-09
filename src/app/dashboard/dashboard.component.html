@@ -1,0 +1,144 @@
+<div class="container mt-4 lvc-dashboard">
+  <h2 class="mb-4">Welcome to Live Virtual Classes (LVC) Dashboard</h2>
+
+  <!-- Charts Row -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Registrations by Course</h5>
+          <div id="piechart-container" style="height: 300px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Registrations Over Time</h5>
+          <div id="linechart-container" style="height: 300px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <h4 class="card-title">Registered Users</h4>
+      <div *ngIf="registeredUsers.length > 0; else noUsers">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Location</th>
+                <th>Course</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of registeredUsers; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.location }}</td>
+                <td>{{ user.course }}</td>
+                <td>
+                  <button class="btn btn-outline-danger btn-sm shadow delete-btn" (click)="confirmDelete(user, i)" title="Delete Registration">
+                    <span aria-hidden="true" style="font-size:1.2rem; display: flex; align-items: center; justify-content: center;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                        <path d="M11 1.5v1H15v1H1v-1h4v-1a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zm-7.5 3h9l-.5 9.5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1L3.5 4.5z"/>
+                      </svg>
+                    </span>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- Delete Confirmation Modal (must be outside table structure) -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete this registration?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            <button type="button" class="btn btn-danger" (click)="deleteUser()">Yes, Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noUsers>
+      <p>No registered users found.</p>
+    </ng-template>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-title">Upcoming Live Classes</h4>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong>Advanced Java</strong> - 2 Apr 2026, 10:00 AM
+              <span class="badge bg-success float-end">Enrolled</span>
+            </li>
+            <li class="list-group-item">
+              <strong>Python for Beginners</strong> - 3 Apr 2026, 2:00 PM
+              <span class="badge bg-warning float-end">Not Enrolled</span>
+            </li>
+            <li class="list-group-item">
+              <strong>JavaScript Essentials</strong> - 4 Apr 2026, 11:00 AM
+              <span class="badge bg-success float-end">Enrolled</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h4 class="card-title">My Enrolled Courses</h4>
+          <ul>
+            <li>Advanced Java</li>
+            <li>JavaScript Essentials</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a routerLink="/dashboard">Dashboard</a></li>
+            <li><a routerLink="/courses">All Courses</a></li>
+            <li><a routerLink="/registration">Register for a Course</a></li>
+            <li><a routerLink="/gallery">Photo Gallery</a></li>
+            <li><a routerLink="/contact">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">User Info</h5>
+          <div *ngIf="userData; else noData">
+            <p><strong>User Id:</strong> {{ userData.userId }}</p>
+            <p><strong>Designation:</strong> {{ userData.designation }}</p>
+            <p><strong>Phone No.:</strong> {{ userData.phoneNo }}</p>
+            <p><strong>Location:</strong> {{ userData.location }}</p>
+          </div>
+          <ng-template #noData>
+            <p>No user data found. Please sign in.</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>

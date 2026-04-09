@@ -1,0 +1,49 @@
+
+.home-hero {
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+  .hero-img {
+    max-width: 120px;
+    border-radius: 50%;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+  h1 {
+    font-weight: 700;
+    color: #2a2a2a;
+  }
+  .lead {
+    color: #4a4a4a;
+  }
+}
+
+.platform-description {
+  background: #f4f7fa;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+  h2 {
+    font-weight: 600;
+  }
+  p {
+    color: #555;
+  }
+}
+
+.features {
+  .feature-card {
+    background: #fff;
+    border-radius: 1rem;
+    transition: box-shadow 0.2s;
+    &:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    }
+    img {
+      margin-bottom: 1rem;
+    }
+    h5 {
+      font-weight: 600;
+      color: #1a237e;
+    }
+    p {
+      color: #444;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <!-- User Id -->
+  <div class="mb-3">
+    <label for="userId" class="form-label">User Id</label>
+    <input type="text" id="userId" class="form-control" formControlName="userId">
+    <div *ngIf="signUpForm.get('userId')?.touched && signUpForm.get('userId')?.invalid" class="text-danger">
+      User Id is required (min 4 chars).
+    </div>
+  </div>
+
+  <!-- Designation -->
+  <div class="mb-3">
+    <label for="designation" class="form-label">Designation</label>
+    <input type="text" id="designation" class="form-control" formControlName="designation">
+    <div *ngIf="signUpForm.get('designation')?.touched && signUpForm.get('designation')?.invalid" class="text-danger">
+      Designation is required.
+    </div>
+  </div>
+
+  <!-- Phone No. -->
+  <div class="mb-3">
+    <label for="phoneNo" class="form-label">Phone No.</label>
+    <input type="text" id="phoneNo" class="form-control" formControlName="phoneNo">
+    <div *ngIf="signUpForm.get('phoneNo')?.touched && signUpForm.get('phoneNo')?.invalid" class="text-danger">
+      Enter a valid phone number (10-15 digits).
+    </div>
+  </div>
+
+  <!-- Location -->
+  <div class="mb-3">
+    <label for="location" class="form-label">Location</label>
+    <input type="text" id="location" class="form-control" formControlName="location">
+    <div *ngIf="signUpForm.get('location')?.touched && signUpForm.get('location')?.invalid" class="text-danger">
+      Location is required.
+    </div>
+  </div>
+
+  <!-- ...existing form fields... -->
+
+  <button type="submit" class="btn btn-primary" [disabled]="signUpForm.invalid">Sign Up</button>
+</form>

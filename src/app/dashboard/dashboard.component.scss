@@ -1,0 +1,66 @@
+a.delete-btn {
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.delete-btn {
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.delete-btn:hover, .delete-btn:focus {
+  background: #dc3545 !important;
+  color: #fff !important;
+  transform: scale(1.15);
+  box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25);
+}
+
+.lvc-dashboard {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 2.5rem 2rem 2rem 2rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+}
+h2 {
+  color: #007bff;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.card {
+  border-radius: 10px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  margin-bottom: 1.5rem;
+}
+.card-title {
+  color: #343a40;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.list-group-item {
+  font-size: 1.05rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.badge {
+  font-size: 0.95em;
+  padding: 0.5em 0.8em;
+}
+ul {
+  margin-bottom: 0;
+}
+a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .lvc-dashboard {
+    padding: 1rem 0.5rem;
+  }
+  .card {
+    margin-bottom: 1rem;
+  }
+}

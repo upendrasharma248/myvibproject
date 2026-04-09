@@ -1,0 +1,25 @@
+html, body, app-root {
+	height: 100%;
+}
+
+app-root {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main.container {
+	flex: 1 0 auto;
+}
+
+app-footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100vw;
+	z-index: 100;
+}
+
+main.container {
+	margin-bottom: 70px; // Adjust if footer height changes
+}

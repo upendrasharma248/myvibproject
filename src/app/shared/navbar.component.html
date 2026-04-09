@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" routerLink="/dashboard">
+      <img src="/assets/virtual-class.svg" alt="LVC Logo" width="32" height="32" style="vertical-align:middle;">
+      <span>LVC</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ng-container *ngFor="let item of menu">
+          <li class="nav-item dropdown" *ngIf="item.children; else singleLink">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{item.label}}" role="button"
+                [ngClass]="{
+                  'active': isMenuActive(item)
+                }">
+                <span class="dropdown-label-flex">{{ item.label }} <span class="dropdown-arrow"></span></span>
+              </a>
+            <ul class="dropdown-menu" [attr.aria-labelledby]="'navbarDropdown' + item.label">
+              <ng-container *ngFor="let child of item.children">
+                <li *ngIf="child.children; else subMenuLink" class="dropdown-submenu">
+                  <a class="dropdown-item dropdown-toggle d-flex justify-content-between align-items-center" href="#">
+                    <span>{{ child.label }}</span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li *ngFor="let sub of child.children">
+                      <a class="dropdown-item" [routerLink]="sub.route" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ sub.label }}</a>
+                    </li>
+                  </ul>
+                </li>
+                <ng-template #subMenuLink>
+                  <a class="dropdown-item" [routerLink]="child.route" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ child.label }}</a>
+                </ng-template>
+              </ng-container>
+            </ul>
+          </li>
+          <ng-template #singleLink>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ item.label }}</a>
+            </li>
+          </ng-template>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>

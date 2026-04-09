@@ -1,0 +1,55 @@
+<section class="container">
+  <h2>Registration</h2>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="row g-3 mt-3" style="max-width: 500px; margin:auto;">
+    <div class="col-12">
+      <label for="name" class="form-label">Full Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name" placeholder="Enter your name"
+        [ngClass]="{'is-invalid': (submitted || registrationForm.get('name')?.touched) && registrationForm.get('name')?.invalid}">
+      <div class="invalid-feedback d-block" *ngIf="(submitted || registrationForm.get('name')?.touched) && registrationForm.get('name')?.errors?.['required']">
+        Name is required.
+      </div>
+    </div>
+    <div class="col-12">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter your email"
+        [ngClass]="{'is-invalid': (submitted || registrationForm.get('email')?.touched) && registrationForm.get('email')?.invalid}">
+      <div class="invalid-feedback d-block" *ngIf="(submitted || registrationForm.get('email')?.touched) && registrationForm.get('email')?.errors?.['required']">
+        Email is required.
+      </div>
+      <div class="invalid-feedback d-block" *ngIf="(submitted || registrationForm.get('email')?.touched) && registrationForm.get('email')?.errors?.['email']">
+        Please enter a valid email address.
+      </div>
+    </div>
+    <div class="col-12">
+      <label for="location" class="form-label">Location</label>
+      <input type="text" class="form-control" id="location" formControlName="location" placeholder="Enter your location"
+        [ngClass]="{'is-invalid': (submitted || registrationForm.get('location')?.touched) && registrationForm.get('location')?.invalid}">
+      <div class="invalid-feedback d-block" *ngIf="(submitted || registrationForm.get('location')?.touched) && registrationForm.get('location')?.errors?.['required']">
+        Location is required.
+      </div>
+    </div>
+    <div class="col-12">
+      <label for="course" class="form-label">Select Course</label>
+      <select class="form-select" id="course" formControlName="course"
+        [ngClass]="{'is-invalid': (submitted || registrationForm.get('course')?.touched) && registrationForm.get('course')?.invalid}">
+        <option value="">Select a course</option>
+        <option>Java</option>
+        <option>Python</option>
+        <option>JavaScript</option>
+        <option>C++</option>
+      </select>
+      <div class="invalid-feedback d-block" *ngIf="(submitted || registrationForm.get('course')?.touched) && registrationForm.get('course')?.errors?.['required']">
+        Course selection is required.
+      </div>
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary w-100" [disabled]="loading">
+        {{ loading ? 'Registering...' : 'Register Now' }}
+      </button>
+    </div>
+    <div class="col-12">
+      <div *ngIf="successMessage" class="alert alert-success mt-2">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" class="alert alert-danger mt-2">{{ errorMessage }}</div>
+    </div>
+  </form>
+</section>

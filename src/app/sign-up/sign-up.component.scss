@@ -1,0 +1,69 @@
+// Container styling
+form {
+  max-width: 420px;
+  margin: 2rem auto;
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+
+  .mb-3 {
+    margin-bottom: 1.25rem;
+  }
+
+  label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  input.form-control {
+    border-radius: 0.5rem;
+    border: 1px solid #ced4da;
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 0.2rem rgba(13,110,253,.15);
+    }
+  }
+
+  .text-danger {
+    font-size: 0.92rem;
+    margin-top: 0.25rem;
+    color: #dc3545;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    background: linear-gradient(90deg, #0d6efd 60%, #6610f2 100%);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    transition: background 0.2s;
+
+    &:hover, &:focus {
+      background: linear-gradient(90deg, #6610f2 60%, #0d6efd 100%);
+    }
+
+    &:disabled {
+      background: #adb5bd;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 600px) {
+  form {
+    padding: 1.2rem 0.7rem;
+    max-width: 98vw;
+  }
+}
